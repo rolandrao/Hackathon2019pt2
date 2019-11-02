@@ -1,44 +1,7 @@
-
-import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon2019pt2/detail_page.dart';
-import 'package:hackathon2019pt2/ui/home/home_page.dart';
 
-void main() => runApp(new MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-          primaryColor: Color.fromRGBO(58, 66, 86, 1.0), fontFamily: 'Raleway'),
-      home: new ListPage(title: 'Lessons'),
-      // home: DetailPage(),
-    );
-  }
-}
-
-class ListPage extends StatefulWidget {
-  ListPage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _ListPageState createState() => _ListPageState();
-}
-
-class _ListPageState extends State<ListPage> {
-  List lessons;
-
-  @override
-  void initState() {
-    lessons = getLessons();
-    super.initState();
-  }
-
+class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ListTile makeListTile(Lesson lesson) => ListTile(
@@ -87,28 +50,16 @@ class _ListPageState extends State<ListPage> {
       },
     );
 
-    Card makeCard(Lesson lesson) => Card(
-      elevation: 15.0,
-      margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25.0),
-      ),
-      child: Container(
-        width: 200,
-        height: 300,
-        //decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-        child: makeListTile(lesson),
-      ),
-    );
+    Card makeCard() => Card();
 
     final makeBody = Container(
       // decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 1.0)),
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        itemCount: lessons.length,
+        itemCount: 0,
         itemBuilder: (BuildContext context, int index) {
-          return makeCard(lessons[index]);
+          return makeCard();
         },
       ),
     );
@@ -125,7 +76,7 @@ class _ListPageState extends State<ListPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
+                  MaterialPageRoute(builder: (context) => DetailPage()),
                 );
 
               },
@@ -150,7 +101,7 @@ class _ListPageState extends State<ListPage> {
     final topAppBar = AppBar(
       elevation: 0.1,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      title: Text(widget.title),
+      title: Text("Aneesh"),
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.list),
@@ -166,23 +117,4 @@ class _ListPageState extends State<ListPage> {
       bottomNavigationBar: makeBottom,
     );
   }
-}
-
-List getLessons() {
-  return [
-    Lesson(
-        title: "Earth quake",
-        level: "Beginner",
-        indicatorValue: 0.33,
-        price: 20,
-        content:
-        "Start by taking a couple of minutes to read the info in this section. Launch your app and click on the Settings menu.  While on the settings page, click the Save button.  You should see a circular progress indicator display in the middle of the page and the user interface elements cannot be clicked due to the modal barrier that is constructed."),
-    Lesson(
-        title: "Tsunami",
-        level: "Beginner",
-        indicatorValue: 0.33,
-        price: 50,
-        content:
-        "Start by taking a couple of minutes to read the info in this section. Launch your app and click on the Settings menu.  While on the settings page, click the Save button.  You should see a circular progress indicator display in the middle of the page and the user interface elements cannot be clicked due to the modal barrier that is constructed."),
-  ];
 }

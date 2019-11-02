@@ -31,6 +31,7 @@ class GradientAppBar extends StatelessWidget {
       .padding
       .top;
 
+
     return new Container(
       padding: new EdgeInsets.only(top: statusBarHeight),
       height: statusBarHeight + barHeight,

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "538781654342",
-    "firebase_url": "https://mitigation-5096a.firebaseio.com",
-    "project_id": "mitigation-5096a",
-    "storage_bucket": "mitigation-5096a.appspot.com"
+    "project_number": "474557701686",
+    "firebase_url": "https://natural-257820.firebaseio.com",
+    "project_id": "natural-257820",
+    "storage_bucket": "natural-257820.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:538781654342:android:e6c35b1aed8af25ee59947",
+        "mobilesdk_app_id": "1:474557701686:android:d9b77fa353997242450297",
         "android_client_info": {
           "package_name": "com.example.hackathon2019pt2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "538781654342-0feoc3c8tgnhjkrcdcsnmo5pq0ppqivj.apps.googleusercontent.com",
+          "client_id": "474557701686-egdfj3ka5kcfamrn5k2q5smcmcib13m9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCpWdStB_2o9bAr0FSIzg7QIViL-DpqGzk"
+          "current_key": "AIzaSyBGuZ83mcUb7Y1EbGlkWxhAmaaxqiplWfA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "538781654342-0feoc3c8tgnhjkrcdcsnmo5pq0ppqivj.apps.googleusercontent.com",
+              "client_id": "474557701686-egdfj3ka5kcfamrn5k2q5smcmcib13m9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
