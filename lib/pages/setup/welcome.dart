@@ -1,5 +1,5 @@
-import 'package:hello/pages/setup/sign_in.dart';
-import 'package:hello/pages/setup/sign_up.dart';
+import 'package:hackathon2019pt2/pages/setup/sign_in.dart';
+import 'package:hackathon2019pt2/pages/setup/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {

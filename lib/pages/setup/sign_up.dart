@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hello/pages/setup/sign_in.dart';
+import 'package:hackathon2019pt2/pages/setup/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {

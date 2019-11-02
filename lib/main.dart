@@ -1,4 +1,4 @@
-import 'package:hello/pages/setup/welcome.dart';
+import 'package:hackathon2019pt2/pages/setup/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
