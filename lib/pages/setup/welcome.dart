@@ -6,6 +6,7 @@ class WelcomePage extends StatefulWidget {
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }
+// TEST COMMENT
 
 class _WelcomePageState extends State<WelcomePage> {
   @override
