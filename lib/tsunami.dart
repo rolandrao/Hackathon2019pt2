@@ -10,29 +10,29 @@ import 'package:hackathon2019pt2/detail_page.dart';
 import 'package:hackathon2019pt2/ui/home/home_page.dart';
 
 
-class EarthQuake extends StatelessWidget {
+class Tsunami extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Emergency',
 
-      home: new EarthQuakePage(title: 'Lessons'),
+      home: new TsunamiPage(title: 'Lessons'),
       // home: DetailPage(),
     );
   }
 }
 
-class EarthQuakePage extends StatefulWidget {
-  EarthQuakePage({Key key, this.title}) : super(key: key);
+class TsunamiPage extends StatefulWidget {
+  TsunamiPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _EarthQuakePageState createState() => _EarthQuakePageState();
+  _TsunamiState createState() => _TsunamiState();
 }
 
-class _EarthQuakePageState extends State<EarthQuakePage> {
+class _TsunamiState extends State<TsunamiPage> {
   List lessons;
   List Cards;
 
@@ -49,7 +49,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
     ListTile makeListTile(Lesson lesson, MaterialPageRoute k) => ListTile(
 
       title: Text(
-         "                                                                " + lesson.title,
+        "                                                                " + lesson.title,
         style: TextStyle(color: lesson.colorTitle, fontWeight: FontWeight.bold, fontSize: 18, ),
         textAlign: TextAlign.center,
       ),
@@ -99,7 +99,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
               height: 100,
               decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
-                  title: "Drop down and take cover under a desk",
+                  title: "Get to high ground, as far inland as possible",
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
                   content:"" ), MaterialPageRoute(
@@ -119,7 +119,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
               height: 100,
               decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
-                  title: "Stay inside until shaking stops",
+                  title: "Watch for sudden rises or draining of ocean water",
                   level: "-Category 3",
                   indicatorValue: 0.0,
                   price: 20,
@@ -142,7 +142,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
               height: 100,
               decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
-                  title: "Stay away from furniture that could fall",
+                  title: "EVACUATE DO NOT WAIT",
                   level: "Category 3",
                   indicatorValue: 0.0,
                   price: 20,
@@ -165,7 +165,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
               height: 100,
               decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
-                  title: "Stay away from windows and lights",
+                  title: "If you're on a boat, go out to sea",
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
                   content:"" ), MaterialPageRoute(
@@ -185,67 +185,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
               height: 100,
               decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
-                  title: "Pull over your vechile and set your parking break",
-                  colorTitle: Colors.white,
-                  colorSub: Colors.white,
-                  content:"" ), MaterialPageRoute(
-                  builder: (context) => ListPage())
-              )
-          ),
-        ),
-        Card(
-          elevation: 15.0,
-          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          child:
-          Container(
-              width: 200,
-              height: 100,
-              decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
-              child: makeListTile(Lesson(
-                  title: "If outdoors, stay from buildings ",
-                  colorTitle: Colors.white,
-                  colorSub: Colors.white,
-                  content:"" ), MaterialPageRoute(
-                  builder: (context) => ListPage())
-              )
-          ),
-        ),
-        Card(
-          elevation: 15.0,
-          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          child:
-          Container(
-              width: 200,
-              height: 100,
-              decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
-              child: makeListTile(Lesson(
-                  title: "Do not get in a doorway",
-                  colorTitle: Colors.white,
-                  colorSub: Colors.white,
-                  content:"" ), MaterialPageRoute(
-                  builder: (context) => ListPage())
-              )
-          ),
-        ),
-        Card(
-          elevation: 15.0,
-          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          child:
-          Container(
-              width: 200,
-              height: 100,
-              decoration: BoxDecoration(color: col, borderRadius: BorderRadius.circular(25)),
-              child: makeListTile(Lesson(
-                  title: "Do not run outside",
+                  title: "listen to loal alerts",
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
                   content:"" ), MaterialPageRoute(

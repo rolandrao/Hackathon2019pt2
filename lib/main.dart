@@ -1,10 +1,12 @@
 
+import 'package:hackathon2019pt2/EarthQuakeTips.dart';
 import 'package:hackathon2019pt2/Emergency.dart';
 import 'package:hackathon2019pt2/Social.dart';
 import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon2019pt2/detail_page.dart';
+import 'package:hackathon2019pt2/tsunami.dart';
 import 'package:hackathon2019pt2/ui/home/home_page.dart';
 import 'package:dio/dio.dart';
 
@@ -43,61 +45,149 @@ class _ListPageState extends State<ListPage> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
-    ListTile makeListTile(Lesson lesson) => ListTile(
-      contentPadding:
-      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      leading: Container(
-        padding: EdgeInsets.only(right: 12.0),
-        decoration: new BoxDecoration(
-            border: new Border(
-                right: new BorderSide(width: 1.0, color: Colors.white24))),
-        child: Icon(Icons.autorenew, color: Colors.white),
-      ),
+    ListTile makeListTile(Lesson lesson, MaterialPageRoute k) => ListTile(
       title: Text(
-        lesson.title,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+       "                                                                            " + lesson.title,
+        style: TextStyle(color: lesson.colorTitle, fontWeight: FontWeight.bold, fontSize: 21), textAlign: TextAlign.center,
       ),
-       subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+      //subtitle: Text(lesson.content, style: TextStyle(color: lesson.colorSub, fontSize: 16, fontWeight:  FontWeight.bold)),
 
       trailing:
       Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0),
       onTap: () {
         Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => DetailPage()));
+            k);
       },
     );
+    ListView makeBody() => ListView
+      (
+      children: <Widget>[
+        Card(
+          elevation: 15.0,
+          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child:
+          Container(
+              width: 200,
+              height: 285,
+              decoration: BoxDecoration(color: Color.fromRGBO(87, 96, 111, 1.0), borderRadius: BorderRadius.circular(25)),
+              child: makeListTile(Lesson(
+                  title: "Natural Disasters Near You",
+                  level: "Category 3",
+                  indicatorValue: 0.0,
+                  price: 20,
+                  colorTitle: Colors.white,
+                  colorSub: Colors.black,
+                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  builder: (context) => ListPage())
+              )
+          ),
+        ),
+        Card(
+          elevation: 15.0,
+          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child:
+          Container(
+              width: 200,
+              height: 100,
+              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              child: makeListTile(Lesson(
+                  title: "Tsunami",
+                  level: "Category 3",
+                  indicatorValue: 0.0,
+                  price: 20,
+                  colorTitle: Colors.white,
+                  colorSub: Colors.white,
+                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  builder: (context) => Tsunami())
+              )
+          ),
+        ),
+        Card(
+          elevation: 15.0,
+          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child:
+          Container(
+              width: 200,
+              height: 100,
+              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              child: makeListTile(Lesson(
+                  title: "Earth Quake",
+                  level: "Category 3",
+                  indicatorValue: 0.0,
+                  price: 20,
+                  colorTitle: Colors.white,
+                  colorSub: Colors.white,
+                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  builder: (context) => EarthQuake())
+              )
+          ),
 
-    Card makeCard(Lesson lesson) => Card(
-      elevation: 15.0,
-      margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25.0),
-      ),
-      child: Container(
-        width: 200,
-        height: 300,
-        decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9), borderRadius: BorderRadius.circular(25)),
-        child: makeListTile(lesson),
-      ),
+        ),Card(
+          elevation: 15.0,
+          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child:
+          Container(
+              width: 200,
+              height: 100,
+              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              child: makeListTile(Lesson(
+                  title: "Tornado",
+                  level: "Category 3",
+                  indicatorValue: 0.0,
+                  price: 20,
+                  colorTitle: Colors.white,
+                  colorSub: Colors.white,
+                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  builder: (context) => ListPage())
+              )
+          ),
+        ),
+        Card(
+          elevation: 15.0,
+          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child:
+          Container(
+              width: 200,
+              height: 100,
+              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              child: makeListTile(Lesson(
+                  title: "Forest Fire",
+                  level: "Category 3",
+                  indicatorValue: 0.0,
+                  price: 20,
+                  colorTitle: Colors.white,
+                  colorSub: Colors.white,
+                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  builder: (context) => ListPage())
+              )
+          ),
+        ),
+
+
+
+      ],
+
+
     );
 
-    final makeBody = Container(
-      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/423.jpeg'), fit: BoxFit.cover)),
-      decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 1.0)),
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: lessons.length,
-        itemBuilder: (BuildContext context, int index) {
-          return makeCard(lessons[index]);
-        },
-      ),
-    );
 
     final makeBottom = Container(
       height: 55.0,
@@ -164,9 +254,9 @@ class _ListPageState extends State<ListPage> {
 
     return Scaffold(
 
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       appBar: topAppBar,
-      body: makeBody,
+      body: makeBody(),
       bottomNavigationBar: makeBottom,
     );
   }
