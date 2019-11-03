@@ -50,7 +50,7 @@ class _EarthQuakePageState extends State<EarthQuakePage> {
     ListTile makeListTile(Lesson lesson, MaterialPageRoute k) => ListTile(
 
       title: Text(
-         "                                                                " + lesson.title,
+        "                                                                " + lesson.title,
         style: TextStyle(color: lesson.colorTitle, fontWeight: FontWeight.bold, fontSize: 18, ),
         textAlign: TextAlign.center,
       ),
