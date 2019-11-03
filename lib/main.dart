@@ -1,4 +1,5 @@
 
+import 'package:hackathon2019pt2/Emergency.dart';
 import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
@@ -56,30 +57,10 @@ class _ListPageState extends State<ListPage> {
       ),
       title: Text(
         lesson.title,
-        style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
       ),
-      // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+       subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
 
-      subtitle: Row(
-        children: <Widget>[
-          Expanded(
-              flex: 1,
-              child: Container(
-                // tag: 'hero',
-                child: LinearProgressIndicator(
-                   // backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
-                    value: lesson.indicatorValue,
-                    valueColor: AlwaysStoppedAnimation(Colors.green)),
-              )),
-          Expanded(
-            flex: 4,
-            child: Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(lesson.level,
-                    style: TextStyle(color: Colors.white))),
-          )
-        ],
-      ),
       trailing:
       Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0),
       onTap: () {
@@ -99,14 +80,14 @@ class _ListPageState extends State<ListPage> {
       child: Container(
         width: 200,
         height: 300,
-        //decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+        decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9), borderRadius: BorderRadius.circular(25)),
         child: makeListTile(lesson),
       ),
     );
 
     final makeBody = Container(
-      decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/423.jpeg'), fit: BoxFit.cover)),
-      // decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 1.0)),
+      //decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/423.jpeg'), fit: BoxFit.cover)),
+      decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 1.0)),
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
@@ -120,7 +101,7 @@ class _ListPageState extends State<ListPage> {
     final makeBottom = Container(
       height: 55.0,
       child: BottomAppBar(
-        color: Colors.transparent,
+        color: Color.fromRGBO(58, 66, 86, 1.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -146,7 +127,14 @@ class _ListPageState extends State<ListPage> {
             ),
             IconButton(
               icon: Icon(Icons.warning, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EmergencyPage()),
+                );
+
+              },
             )
           ],
         ),
@@ -154,7 +142,7 @@ class _ListPageState extends State<ListPage> {
     );
     final topAppBar = AppBar(
       elevation: 0.1,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       title: Text("📍Troy, NY"), centerTitle: true, toolbarOpacity: 1.0,
       actions: <Widget>[
         IconButton(
