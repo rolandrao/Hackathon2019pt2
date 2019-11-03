@@ -66,7 +66,8 @@ class FirestoreCRUDPageState extends State<FirestoreCRUDPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firestore CRUD'),
+        title: Text('Disaster Survival Forum'),
+        backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       ),
       body: ListView(
         padding: EdgeInsets.all(8),
@@ -81,7 +82,7 @@ class FirestoreCRUDPageState extends State<FirestoreCRUDPage> {
               RaisedButton(
                 onPressed: createData,
                 child: Text('Send', style: TextStyle(color: Colors.white)),
-                color: Colors.green,
+                color: Color.fromRGBO(44,133,140, 1.0),
               ),
             ],
           ),
@@ -97,6 +98,7 @@ class FirestoreCRUDPageState extends State<FirestoreCRUDPage> {
           )
         ],
       ),
+    backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
     );
   }
 

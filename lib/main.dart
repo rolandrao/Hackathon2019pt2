@@ -14,6 +14,11 @@ import 'package:hackathon2019pt2/wildfire.dart';
 
 void main() => runApp(new MyApp());
 
+// initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
+
+
+
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -24,6 +29,7 @@ class MyApp extends StatelessWidget {
       home: new ListPage(title: 'Lessons'),
       // home: DetailPage(),
     );
+
   }
 }
 
@@ -31,7 +37,7 @@ class ListPage extends StatefulWidget {
   ListPage({Key key, this.title}) : super(key: key);
 
   final String title;
-
+  Color col1 = Color.fromRGBO(72, 126, 176,1);
   @override
   _ListPageState createState() => _ListPageState();
 }
@@ -43,6 +49,7 @@ class _ListPageState extends State<ListPage> {
   void initState() {
     lessons = getLessons();
     super.initState();
+
   }
 
 
@@ -54,7 +61,7 @@ class _ListPageState extends State<ListPage> {
         "                                                                            " + lesson.title,
         style: TextStyle(color: lesson.colorTitle, fontWeight: FontWeight.bold, fontSize: 21), textAlign: TextAlign.center,
       ),
-      //subtitle: Text(lesson.content, style: TextStyle(color: lesson.colorSub, fontSize: 16, fontWeight:  FontWeight.bold)),
+      subtitle: Text("                                                                             " +lesson.content, style: TextStyle(color: Colors.white, fontSize: 13, fontWeight:  FontWeight.bold), textAlign: TextAlign.center,),
 
       trailing:
       Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0),
@@ -77,7 +84,7 @@ class _ListPageState extends State<ListPage> {
           Container(
               width: 200,
               height: 285,
-              decoration: BoxDecoration(color: Color.fromRGBO(87, 96, 111, 1.0), borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(color: Color.fromRGBO(72, 126, 176,1), borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
                   title: "Natural Disasters Near You",
                   level: "Category 3",
@@ -85,7 +92,7 @@ class _ListPageState extends State<ListPage> {
                   price: 20,
                   colorTitle: Colors.white,
                   colorSub: Colors.black,
-                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  content: "No Disasters Near By.  "), MaterialPageRoute(
                   builder: (context) => ListPage())
               )
           ),
@@ -100,7 +107,7 @@ class _ListPageState extends State<ListPage> {
           Container(
               width: 200,
               height: 100,
-              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(color: Color.fromRGBO(72, 126, 176,1), borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
                   title: "Tsunami",
                   level: "Category 3",
@@ -108,7 +115,7 @@ class _ListPageState extends State<ListPage> {
                   price: 20,
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
-                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  content: ""), MaterialPageRoute(
                   builder: (context) => Tsunami())
               )
           ),
@@ -123,7 +130,7 @@ class _ListPageState extends State<ListPage> {
           Container(
               width: 200,
               height: 100,
-              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(color:  Color.fromRGBO(72, 126, 176,1), borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
                   title: "Earth Quake",
                   level: "Category 3",
@@ -131,7 +138,7 @@ class _ListPageState extends State<ListPage> {
                   price: 20,
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
-                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  content: ""), MaterialPageRoute(
                   builder: (context) => EarthQuake())
               )
           ),
@@ -146,7 +153,7 @@ class _ListPageState extends State<ListPage> {
           Container(
               width: 200,
               height: 100,
-              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(color:  Color.fromRGBO(72, 126, 176,1), borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
                   title: "Tornado",
                   level: "Category 3",
@@ -154,7 +161,7 @@ class _ListPageState extends State<ListPage> {
                   price: 20,
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
-                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  content: ""), MaterialPageRoute(
                   builder: (context) => Tornado())
               )
           ),
@@ -169,7 +176,7 @@ class _ListPageState extends State<ListPage> {
           Container(
               width: 200,
               height: 100,
-              decoration: BoxDecoration(color: Color.fromRGBO(116, 185, 255, 1.0), borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(color: Color.fromRGBO(72, 126, 176,1), borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
                   title: "Forest Fire",
                   level: "Category 3",
@@ -177,7 +184,7 @@ class _ListPageState extends State<ListPage> {
                   price: 20,
                   colorTitle: Colors.white,
                   colorSub: Colors.white,
-                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  content: ""), MaterialPageRoute(
                   builder: (context) => Fire())
               )
           ),
@@ -194,7 +201,7 @@ class _ListPageState extends State<ListPage> {
     final makeBottom = Container(
       height: 55.0,
       child: BottomAppBar(
-        color: Color.fromRGBO(58, 66, 86, 1.0),
+        color: Color.fromRGBO(25, 42, 86,1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -246,7 +253,7 @@ class _ListPageState extends State<ListPage> {
     );
     final topAppBar = AppBar(
       elevation: 0.1,
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      backgroundColor: Color.fromRGBO(25, 42, 86,1),
       title: Text("📍Troy, NY"), centerTitle: true, toolbarOpacity: 1.0,
       actions: <Widget>[
         IconButton(
@@ -261,7 +268,7 @@ class _ListPageState extends State<ListPage> {
 
     return Scaffold(
 
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      backgroundColor: Color.fromRGBO(25, 42, 86,1),
       appBar: topAppBar,
       body: makeBody(),
       bottomNavigationBar: makeBottom,
@@ -277,14 +284,14 @@ List getLessons() {
         indicatorValue: 0.0,
         price: 20,
         content:
-        "Start by taking a couple of minutes to read the info in this section. Launch your app and click on the Settings menu.  While on the settings page, click the Save button.  You should see a circular progress indicator display in the middle of the page and the user interface elements cannot be clicked due to the modal barrier that is constructed."),
+        ""),
     Lesson(
         title: "Tsunami",
         level: "Beginner",
         indicatorValue: 0.33,
         price: 50,
         content:
-        "Start by taking a couple of minutes to read the info in this section. Launch your app and click on the Settings menu.  While on the settings page, click the Save button.  You should see a circular progress indicator display in the middle of the page and the user interface elements cannot be clicked due to the modal barrier that is constructed."),
+        ""),
   ];
 }
 

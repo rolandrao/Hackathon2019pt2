@@ -10,18 +10,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:hackathon2019pt2/utils/readCSV.dart';
 import 'package:flutter/cupertino.dart';
 import "package:dio/dio.dart";
+import 'package:hackathon2019pt2/map.dart';
 
 const apiKey = "AIzaSyAxR68m3rpaOKaUHtsRSaV7NWYVMzv2kPM";
-const lat = 42.7291129;
-const lng = -73.6796580;
+const lat = 34.068797;
+const lng = -118.444789;
 
 var places = new List<Place>();
 var markers = new List<Marker>();
 
-class MapPage extends StatefulWidget {
+class MapPage2 extends StatefulWidget {
   static const String routeName = "/map";
   @override
-  _MapPageState createState() => _MapPageState();
+  _MapPageState2 createState() => _MapPageState2();
 }
 
 class Place {
@@ -39,21 +40,38 @@ class Place {
 
 }
 
-class _MapPageState extends State<MapPage> {
+class _MapPageState2 extends State<MapPage2> {
   GoogleMapController _controller;
   bool isMapCreated = false;
-  static final LatLng myLocation = LatLng(42.7291129, -73.6796580);
+  static final LatLng myLocation = LatLng(lat, lng);
 
   @override
   void initState() {
     super.initState();
   }
 
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    await searchNearby('hospital');
+  void didChangeDependencies() {
+    searchNearby('hospital');
     for(int i = 0; i < places.length; i++){
+      //print(places[i].name);
+      markers.add(new Marker(
+
+        markerId: MarkerId(places[i].name),
+        position: LatLng(double.parse(places[i].lat),double.parse(places[i].lng)),
+        icon: BitmapDescriptor.defaultMarkerWithHue(
+          BitmapDescriptor.hueBlue,
+        ),
+        infoWindow: InfoWindow(title: places[i].name, snippet: ''),
+        onTap:() {
+          //_onMarkerTapped(markerId);
+        },
+      ));
+    }
+
+//for(int i = 0; i < places.length)
+    searchNearby('police');
+    for(int i = markers.length; i < places.length; i++){
+      //print(places[i].name);
       markers.add(new Marker(
 
         markerId: MarkerId(places[i].name),
@@ -61,17 +79,24 @@ class _MapPageState extends State<MapPage> {
         icon: BitmapDescriptor.defaultMarkerWithHue(
           BitmapDescriptor.hueRed,
         ),
-        infoWindow: InfoWindow(title: places[i].name, snippet: 'Hospital'),
+        infoWindow: InfoWindow(title: places[i].name, snippet: ''),
         onTap:() {
           //_onMarkerTapped(markerId);
         },
       ));
     }
+    for(int i = 0; i < places.length; i++) {
+      print(places[i].name + "\n");
 
-    //for(int i = 0; i < places.length)
+    }
+
+//for(int i = 0; i < places.length)
 
 
+    print(markers);
   }
+
+
 
   Future searchNearby(String keyword) async {
     Response response;
@@ -217,13 +242,13 @@ class _MapPageState extends State<MapPage> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                        text: "Rensselaer Polytechnic Institute\n",
+                        text: "University of California, Los Angeles\n",
                         style: Theme.of(context).textTheme.title.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                         children: [
                           TextSpan(
-                              text: "Troy, NY",
+                              text: "Los Angeles, CA",
                               style: Theme.of(context).textTheme.subtitle,
                               children: []),
                         ]),
@@ -259,6 +284,3 @@ Widget _buildAboutDialog(BuildContext context, String name) {
     ],
   );
 }
-
-
-

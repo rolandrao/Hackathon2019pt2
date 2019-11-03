@@ -46,19 +46,23 @@ class _SocialPageState extends State<SocialPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(25, 42, 86,1),
         title: Text('Enter your name:'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: TextField(
           controller: myController,
+          style: new TextStyle(color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         // When the user presses the button, show an alert dialog containing
         // the text that the user has entered into the text field.
+        backgroundColor: Color.fromRGBO(25, 42, 86,1),
         onPressed: () {
           name = myController.text;
           Navigator.push(
@@ -69,6 +73,7 @@ class _SocialPageState extends State<SocialPage> {
         tooltip: 'Show me the value!',
         child: Icon(Icons.text_fields),
       ),
+      backgroundColor: Color.fromRGBO(25, 42, 86,1),
     );
   }
 }

@@ -9,8 +9,11 @@ import 'package:hackathon2019pt2/model/Card2.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon2019pt2/detail_page.dart';
 import 'package:hackathon2019pt2/ui/home/home_page.dart';
+import 'package:hackathon2019pt2/map2.dart';
 
 void main() => runApp(new MyApp());
+
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -108,7 +111,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
         height: 300,
         decoration: BoxDecoration(color: Color.fromRGBO(237, 76, 103, 1.0), borderRadius: BorderRadius.circular(25)),
         child: makeListTile(lesson, MaterialPageRoute(
-            builder: (context) => MapPage())),
+            builder: (context) => MapPage2())),
       ),
     );
     Card makeCard2(Card2 Cardi) => Card(
@@ -171,7 +174,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                   colorSub:  Colors.white,
                   content:
                   " "), MaterialPageRoute(
-                  builder: (context) => MapPage()))
+                  builder: (context) => MapPage2()))
           ),
         ),
         Card(
@@ -206,7 +209,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
     final makeBottom = Container(
       height: 55.0,
       child: BottomAppBar(
-        color: Color.fromRGBO(58, 66, 86, 1.0),
+        color: Color.fromRGBO(25, 42, 86,1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -227,7 +230,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
+                  MaterialPageRoute(builder: (context) => MapPage2()),
                 );
               },
             ),
@@ -258,7 +261,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
     );
     final topAppBar = AppBar(
       elevation: 0.1,
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      backgroundColor: Color.fromRGBO(25, 42, 86,1),
       title: Text("️Emergency️",
           style: TextStyle(color: Color.fromRGBO(237, 77, 103, 1.0)),), centerTitle: true, toolbarOpacity: 1.0,
       actions: <Widget>[
@@ -274,7 +277,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
 
     return Scaffold(
 
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      backgroundColor: Color.fromRGBO(25, 42, 86,1),
       appBar: topAppBar,
       body: makeBody(),
       bottomNavigationBar: makeBottom,
