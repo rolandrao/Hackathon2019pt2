@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:hackathon2019pt2/detail_page.dart';
 import 'package:hackathon2019pt2/ui/home/home_page.dart';
 
-void main() => runApp(new MyApp());
 
 class EarthQuake extends StatelessWidget {
   // This widget is the root of your application.
@@ -193,7 +192,7 @@ class _EarthQuakePageState extends State<EmergencyPage> {
                   colorSub: Colors.white,
                   content:
                   "                                                 -Tips and Procedures to stay safe"),MaterialPageRoute(
-                  builder: (context) => EarthQuakeTips()))
+                  builder: (context) => EarthQuake()))
           ),
         )
 

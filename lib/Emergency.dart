@@ -193,7 +193,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                   colorSub: Colors.white,
                   content:
                   "                                                 -Tips and Procedures to stay safe"),MaterialPageRoute(
-                  builder: (context) => EarthQuakeTips()))
+                  builder: (context) => EarthQuake()))
           ),
         )
 

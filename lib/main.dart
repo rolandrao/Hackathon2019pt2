@@ -1,5 +1,6 @@
 
 import 'package:hackathon2019pt2/Emergency.dart';
+import 'package:hackathon2019pt2/Social.dart';
 import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
@@ -123,7 +124,13 @@ class _ListPageState extends State<ListPage> {
             ),
             IconButton(
               icon: Icon(Icons.message, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EmergencyPage()),
+                );
+
+              },
             ),
             IconButton(
               icon: Icon(Icons.warning, color: Colors.white),
