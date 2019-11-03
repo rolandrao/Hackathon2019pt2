@@ -4,6 +4,7 @@ import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon2019pt2/detail_page.dart';
 import 'package:hackathon2019pt2/ui/home/home_page.dart';
+import 'package:dio/dio.dart';
 
 void main() => runApp(new MyApp());
 
@@ -37,6 +38,9 @@ class _ListPageState extends State<ListPage> {
     lessons = getLessons();
     super.initState();
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +128,6 @@ class _ListPageState extends State<ListPage> {
               icon: Icon(Icons.home, color: Colors.white),
               onPressed: () {
 
-
               },
 
             ),
@@ -192,3 +195,5 @@ List getLessons() {
         "Start by taking a couple of minutes to read the info in this section. Launch your app and click on the Settings menu.  While on the settings page, click the Save button.  You should see a circular progress indicator display in the middle of the page and the user interface elements cannot be clicked due to the modal barrier that is constructed."),
   ];
 }
+
+
