@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hackathon2019pt2/config/config_bloc.dart';
+import 'package:hackathon2019pt2/main.dart';
 import 'package:hackathon2019pt2/universal/dev_scaffold.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -57,7 +58,60 @@ class _MapPageState extends State<MapPage> {
     if (isMapCreated) {
       changeMapMode();
     }
-    return DevScaffold(
+    final makeBottom = Container(
+      height: 55.0,
+      child: BottomAppBar(
+        color: Colors.lightBlue,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.home, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ListPage()),
+                );
+
+              },
+
+            ),
+            IconButton(
+              icon: Icon(Icons.map, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapPage()),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.message, color: Colors.white),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.warning, color: Colors.white),
+              onPressed: () {},
+            )
+          ],
+        ),
+      ),
+    );
+    final topAppBar = AppBar(
+      elevation: 0.1,
+      backgroundColor: Colors.lightBlue,
+      title: Text("Location"),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.account_circle),
+          onPressed: () {
+
+
+          },
+        )
+      ],
+    );
+    return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Stack(
@@ -83,13 +137,13 @@ class _MapPageState extends State<MapPage> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                        text: "Google Office\n",
+                        text: "Rensselaer Polytechnic Institute\n",
                         style: Theme.of(context).textTheme.title.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                         children: [
                           TextSpan(
-                              text: "Shoreline Amphitheatre, Mountain View, CA",
+                              text: "Troy, NY",
                               style: Theme.of(context).textTheme.subtitle,
                               children: []),
                         ]),
@@ -98,7 +152,8 @@ class _MapPageState extends State<MapPage> {
           ],
         ),
       ),
-      title: "Locate Us",
+      bottomNavigationBar: makeBottom,
+      appBar: topAppBar,
     );
   }
 }

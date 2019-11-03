@@ -123,24 +123,26 @@ class _ListPageState extends State<ListPage> {
             IconButton(
               icon: Icon(Icons.home, color: Colors.white),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
-                );
+
 
               },
 
             ),
             IconButton(
-              icon: Icon(Icons.blur_on, color: Colors.white),
+              icon: Icon(Icons.map, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapPage()),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.message, color: Colors.white),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.hotel, color: Colors.white),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.account_box, color: Colors.white),
+              icon: Icon(Icons.warning, color: Colors.white),
               onPressed: () {},
             )
           ],
@@ -150,7 +152,7 @@ class _ListPageState extends State<ListPage> {
     final topAppBar = AppBar(
       elevation: 0.1,
       backgroundColor: Colors.transparent,
-      title: Text("Dashboard"),
+      title: Text("📍Troy, NY"), centerTitle: true, toolbarOpacity: 1.0,
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.account_circle),
@@ -175,9 +177,9 @@ class _ListPageState extends State<ListPage> {
 List getLessons() {
   return [
     Lesson(
-        title: "Earth quake",
+        title: "Troy, NY",
         level: "Beginner",
-        indicatorValue: 0.33,
+        indicatorValue: 0.0,
         price: 20,
         content:
         "Start by taking a couple of minutes to read the info in this section. Launch your app and click on the Settings menu.  While on the settings page, click the Save button.  You should see a circular progress indicator display in the middle of the page and the user interface elements cannot be clicked due to the modal barrier that is constructed."),
