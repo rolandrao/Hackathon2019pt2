@@ -11,29 +11,29 @@ import 'package:hackathon2019pt2/ui/home/home_page.dart';
 
 void main() => runApp(new MyApp());
 
-class MyApp extends StatelessWidget {
+class EarthQuake extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Emergency',
 
-      home: new EmergencyPage(title: 'Lessons'),
+      home: new EarthQuakePage(title: 'Lessons'),
       // home: DetailPage(),
     );
   }
 }
 
-class EmergencyPage extends StatefulWidget {
-  EmergencyPage({Key key, this.title}) : super(key: key);
+class EarthQuakePage extends StatefulWidget {
+  EarthQuakePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _EmergencyPageState createState() => _EmergencyPageState();
+  _EarthQuakePageState createState() => _EarthQuakePageState();
 }
 
-class _EmergencyPageState extends State<EmergencyPage> {
+class _EarthQuakePageState extends State<EmergencyPage> {
   List lessons;
   List Cards;
 
@@ -124,32 +124,32 @@ class _EmergencyPageState extends State<EmergencyPage> {
       ),
     );
 
-     ListView makeBody() => ListView
+    ListView makeBody() => ListView
       (
       children: <Widget>[
-      Card(
-      elevation: 15.0,
-      margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25.0),
-      ),
-      child:
-        Container(
-          width: 200,
-          height: 150,
-          decoration: BoxDecoration(color: Color.fromRGBO(237, 76, 103, 1.0), borderRadius: BorderRadius.circular(25)),
-          child: makeListTile(Lesson(
-              title: "Earth Quake",
-              level: "Category 3",
-              indicatorValue: 0.0,
-              price: 20,
-              colorTitle: Colors.white,
-              colorSub: Colors.black,
-              content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
-            builder: (context) => ListPage())
-        )
+        Card(
+          elevation: 15.0,
+          margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child:
+          Container(
+              width: 200,
+              height: 150,
+              decoration: BoxDecoration(color: Color.fromRGBO(237, 76, 103, 1.0), borderRadius: BorderRadius.circular(25)),
+              child: makeListTile(Lesson(
+                  title: "Earth Quake",
+                  level: "Category 3",
+                  indicatorValue: 0.0,
+                  price: 20,
+                  colorTitle: Colors.white,
+                  colorSub: Colors.black,
+                  content: "                           Category 3                             Aftershock predicted to hit in 1 hour"), MaterialPageRoute(
+                  builder: (context) => ListPage())
+              )
+          ),
         ),
-      ),
         Card(
           elevation: 15.0,
           margin: new EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
@@ -200,7 +200,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
       ],
 
 
-     );
+    );
 
     final makeBottom = Container(
       height: 55.0,
@@ -249,7 +249,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
       elevation: 0.1,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       title: Text("️Emergency️",
-          style: TextStyle(color: Color.fromRGBO(237, 77, 103, 1.0)),), centerTitle: true, toolbarOpacity: 1.0,
+        style: TextStyle(color: Color.fromRGBO(237, 77, 103, 1.0)),), centerTitle: true, toolbarOpacity: 1.0,
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.account_circle),
