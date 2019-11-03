@@ -1,5 +1,6 @@
 
 import 'package:hackathon2019pt2/Emergency.dart';
+import 'package:hackathon2019pt2/main.dart' as prefix0;
 import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
@@ -45,10 +46,64 @@ class _SocialPageState extends State<SocialPage> {
 
   @override
   Widget build(BuildContext context) {
+    final makeBottom = Container(
+      height: 55.0,
+      child: BottomAppBar(
+        color: Color.fromRGBO(58, 66, 86, 1.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.home, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => prefix0.ListPage()),
+                );
+
+
+              },
+
+            ),
+            IconButton(
+              icon: Icon(Icons.map, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapPage()),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.message, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Social()),
+                );
+
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.warning, color: Colors.white),
+              onPressed: () {
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EmergencyPage()),
+                );
+
+              },
+            )
+          ],
+        ),
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rohan cant swim'),
+        title: Text('Contact a First Responder'),
       ),
+      bottomNavigationBar: makeBottom,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: TextField(

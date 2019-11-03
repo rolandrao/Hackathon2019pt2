@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackathon2019pt2/Emergency.dart';
+import 'package:hackathon2019pt2/Social.dart';
 import 'package:hackathon2019pt2/config/config_bloc.dart';
 import 'package:hackathon2019pt2/main.dart';
 import 'package:hackathon2019pt2/universal/dev_scaffold.dart';
@@ -12,8 +14,6 @@ import "package:dio/dio.dart";
 const apiKey = "AIzaSyAxR68m3rpaOKaUHtsRSaV7NWYVMzv2kPM";
 const lat = 42.7291129;
 const lng = -73.6796580;
-
-BitmapDescriptor myIcon;
 
 var places = new List<Place>();
 var markers = new List<Marker>();
@@ -47,11 +47,6 @@ class _MapPageState extends State<MapPage> {
   @override
   void initState() {
     super.initState();
-    BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(size: Size(64, 64)), 'lib/hospital.png')
-        .then((onValue) {
-      myIcon = onValue;
-    });
   }
 
   @override
@@ -59,16 +54,18 @@ class _MapPageState extends State<MapPage> {
     super.didChangeDependencies();
     await searchNearby('hospital');
     for(int i = 0; i < places.length; i++){
-        markers.add(new Marker(
+      markers.add(new Marker(
 
-          markerId: MarkerId(places[i].name),
-          position: LatLng(double.parse(places[i].lat),double.parse(places[i].lng)),
-          icon: myIcon,
-          infoWindow: InfoWindow(title: places[i].name, snippet: 'Hospital'),
-          onTap:() {
-            //_onMarkerTapped(markerId);
-          },
-        ));
+        markerId: MarkerId(places[i].name),
+        position: LatLng(double.parse(places[i].lat),double.parse(places[i].lng)),
+        icon: BitmapDescriptor.defaultMarkerWithHue(
+          BitmapDescriptor.hueRed,
+        ),
+        infoWindow: InfoWindow(title: places[i].name, snippet: 'Hospital'),
+        onTap:() {
+          //_onMarkerTapped(markerId);
+        },
+      ));
     }
 
     //for(int i = 0; i < places.length)
@@ -76,7 +73,7 @@ class _MapPageState extends State<MapPage> {
 
   }
 
-   Future searchNearby(String keyword) async {
+  Future searchNearby(String keyword) async {
     Response response;
     var l = new List();
     var ln = new List();
@@ -99,7 +96,7 @@ class _MapPageState extends State<MapPage> {
 
 
     for(int i = 0; i < l.length; i++){
-        places.add(new Place(l[i],ln[i],name[i]));
+      places.add(new Place(l[i],ln[i],name[i]));
     }
 
   }
@@ -133,7 +130,7 @@ class _MapPageState extends State<MapPage> {
     final makeBottom = Container(
       height: 55.0,
       child: BottomAppBar(
-        color: Colors.lightBlue,
+        color: Color.fromRGBO(58, 66, 86, 1.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -159,11 +156,23 @@ class _MapPageState extends State<MapPage> {
             ),
             IconButton(
               icon: Icon(Icons.message, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Social()),
+                );
+
+
+              },
             ),
             IconButton(
               icon: Icon(Icons.warning, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EmergencyPage()),
+                );
+              },
             )
           ],
         ),
@@ -171,7 +180,7 @@ class _MapPageState extends State<MapPage> {
     );
     final topAppBar = AppBar(
       elevation: 0.1,
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       title: Text("Location"),
       actions: <Widget>[
         IconButton(
@@ -250,7 +259,6 @@ Widget _buildAboutDialog(BuildContext context, String name) {
     ],
   );
 }
-
 
 
 

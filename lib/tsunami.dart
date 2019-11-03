@@ -1,6 +1,7 @@
 
 import 'package:hackathon2019pt2/EarthQuakeTips.dart';
 import 'package:hackathon2019pt2/Emergency.dart';
+import 'package:hackathon2019pt2/Social.dart';
 import 'package:hackathon2019pt2/main.dart';
 import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
@@ -209,11 +210,11 @@ class _TsunamiState extends State<TsunamiPage> {
             IconButton(
               icon: Icon(Icons.home, color: Colors.white),
               onPressed: () {
-
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ListPage()),
                 );
+
 
               },
 
@@ -229,7 +230,13 @@ class _TsunamiState extends State<TsunamiPage> {
             ),
             IconButton(
               icon: Icon(Icons.message, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Social()),
+                );
+
+              },
             ),
             IconButton(
               icon: Icon(Icons.warning, color: Colors.white),
@@ -249,7 +256,7 @@ class _TsunamiState extends State<TsunamiPage> {
     final topAppBar = AppBar(
       elevation: 0.1,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      title: Text("Earthquake",
+      title: Text("Tsunami",
         style: TextStyle(color: Colors.white),), centerTitle: true, toolbarOpacity: 1.0,
       actions: <Widget>[
         IconButton(

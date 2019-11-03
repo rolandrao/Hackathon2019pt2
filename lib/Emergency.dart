@@ -1,6 +1,7 @@
 
 import 'package:hackathon2019pt2/EarthQuakeTips.dart';
 import 'package:hackathon2019pt2/Emergency.dart';
+import 'package:hackathon2019pt2/Social.dart';
 import 'package:hackathon2019pt2/main.dart';
 import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
@@ -160,7 +161,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
           Container(
               width: 200,
               height: 150,
-              decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/mapEQ.png'), fit: BoxFit.cover), borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/MAPLA.png'), fit: BoxFit.cover), borderRadius: BorderRadius.circular(25)),
               child: makeListTile(Lesson(
                   title: "Safe Locations",
                   level: "-Category 3",
@@ -212,6 +213,10 @@ class _EmergencyPageState extends State<EmergencyPage> {
             IconButton(
               icon: Icon(Icons.home, color: Colors.white),
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ListPage()),
+                );
 
 
               },
@@ -228,7 +233,13 @@ class _EmergencyPageState extends State<EmergencyPage> {
             ),
             IconButton(
               icon: Icon(Icons.message, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Social()),
+                );
+
+              },
             ),
             IconButton(
               icon: Icon(Icons.warning, color: Colors.white),
