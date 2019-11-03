@@ -4,6 +4,9 @@ import 'package:hackathon2019pt2/config/config_bloc.dart';
 import 'package:hackathon2019pt2/main.dart';
 import 'package:hackathon2019pt2/universal/dev_scaffold.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hackathon2019pt2/utils/firebase.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 class MapPage extends StatefulWidget {
   static const String routeName = "/map";
@@ -26,24 +29,35 @@ class _MapPageState extends State<MapPage> {
     zoom: 14.4746,
   );
 
+  void newTextBox() {
+    Widget build(BuildContext context) {
+
+    }
+  }
   Set<Marker> _createMarker() {
     return <Marker>[
       Marker(
-          markerId: MarkerId("marker_1"),
+          markerId: MarkerId("RPI"),
           position: myLocation,
           icon: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueOrange,
+            BitmapDescriptor.hueRed,
+          ),
+          onTap:() {
+            showDialog(context: context,
+                builder: (BuildContext context) => _buildAboutDialog(context),
+            );
+            },
+      ),
+
+      Marker(
+          markerId: MarkerId("Hospital"),
+          position: LatLng(42.7338,-73.6725),
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueViolet,
           )),
     ].toSet();
   }
 
-  changeMapMode() {
-    if (ConfigBloc().darkModeOn) {
-      getJsonFile("assets/nightmode.json").then(setMapStyle);
-    } else {
-      getJsonFile("assets/daymode.json").then(setMapStyle);
-    }
-  }
 
   Future<String> getJsonFile(String path) async {
     return await rootBundle.loadString(path);
@@ -55,9 +69,6 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (isMapCreated) {
-      changeMapMode();
-    }
     final makeBottom = Container(
       height: 55.0,
       child: BottomAppBar(
@@ -105,8 +116,8 @@ class _MapPageState extends State<MapPage> {
         IconButton(
           icon: Icon(Icons.account_circle),
           onPressed: () {
-
-
+            print("running getData");
+            getData();
           },
         )
       ],
@@ -127,7 +138,6 @@ class _MapPageState extends State<MapPage> {
               onMapCreated: (GoogleMapController controller) {
                 _controller = controller;
                 isMapCreated = true;
-                changeMapMode();
                 setState(() {});
               },
             ),
@@ -156,4 +166,36 @@ class _MapPageState extends State<MapPage> {
       appBar: topAppBar,
     );
   }
+
 }
+
+Widget _buildAboutDialog(BuildContext context) {
+  return new AlertDialog(
+    title: const Text('About Pop up'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('Okay, got it!'),
+      ),
+    ],
+  );
+}
+
+void getData() {
+  Firestore.instance.collection('fires').getDocuments().then((QuerySnapshot snapshot) {
+    snapshot.documents.forEach((f) => print('${f.data}}'));
+  });
+
+}
+
+
+
