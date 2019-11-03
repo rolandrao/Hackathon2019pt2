@@ -13,6 +13,8 @@ const apiKey = "AIzaSyAxR68m3rpaOKaUHtsRSaV7NWYVMzv2kPM";
 const lat = 42.7291129;
 const lng = -73.6796580;
 
+BitmapDescriptor myIcon;
+
 var places = new List<Place>();
 var markers = new List<Marker>();
 
@@ -45,6 +47,11 @@ class _MapPageState extends State<MapPage> {
   @override
   void initState() {
     super.initState();
+    BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(64, 64)), 'lib/hospital.png')
+        .then((onValue) {
+      myIcon = onValue;
+    });
   }
 
   @override
@@ -56,10 +63,8 @@ class _MapPageState extends State<MapPage> {
 
           markerId: MarkerId(places[i].name),
           position: LatLng(double.parse(places[i].lat),double.parse(places[i].lng)),
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueRed,
-          ),
-          infoWindow: InfoWindow(title: places[i].name, snippet: '*'),
+          icon: myIcon,
+          infoWindow: InfoWindow(title: places[i].name, snippet: 'Hospital'),
           onTap:() {
             //_onMarkerTapped(markerId);
           },

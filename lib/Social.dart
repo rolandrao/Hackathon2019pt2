@@ -4,9 +4,11 @@ import 'package:hackathon2019pt2/map.dart';
 import 'package:hackathon2019pt2/model/lesson.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon2019pt2/detail_page.dart';
-import 'package:hackathon2019pt2/ui/home/home_page.dart';
+import 'package:hackathon2019pt2/pages/home.dart';
+import 'package:hackathon2019pt2/ui/homepage.dart';
 import 'package:dio/dio.dart';
 
+var name;
 
 class Social extends StatelessWidget {
   // This widget is the root of your application.
@@ -57,15 +59,10 @@ class _SocialPageState extends State<SocialPage> {
         // When the user presses the button, show an alert dialog containing
         // the text that the user has entered into the text field.
         onPressed: () {
-          return showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                // Retrieve the text the that user has entered by using the
-                // TextEditingController.
-                content: Text(myController.text),
-              );
-            },
+          name = myController.text;
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
           );
         },
         tooltip: 'Show me the value!',
@@ -74,6 +71,5 @@ class _SocialPageState extends State<SocialPage> {
     );
   }
 }
-
 
 
