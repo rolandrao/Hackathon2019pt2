@@ -13,8 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
-          primaryColor: Color.fromRGBO(58, 66, 86, 1.0), fontFamily: 'Raleway'),
+
       home: new ListPage(title: 'Lessons'),
       // home: DetailPage(),
     );
@@ -53,7 +52,7 @@ class _ListPageState extends State<ListPage> {
       ),
       title: Text(
         lesson.title,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
       ),
       // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
 
@@ -64,7 +63,7 @@ class _ListPageState extends State<ListPage> {
               child: Container(
                 // tag: 'hero',
                 child: LinearProgressIndicator(
-                    backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
+                   // backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
                     value: lesson.indicatorValue,
                     valueColor: AlwaysStoppedAnimation(Colors.green)),
               )),
@@ -102,6 +101,7 @@ class _ListPageState extends State<ListPage> {
     );
 
     final makeBody = Container(
+      decoration: BoxDecoration(image: DecorationImage(image: AssetImage('lib/423.jpeg'), fit: BoxFit.cover)),
       // decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 1.0)),
       child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -116,7 +116,7 @@ class _ListPageState extends State<ListPage> {
     final makeBottom = Container(
       height: 55.0,
       child: BottomAppBar(
-        color: Color.fromRGBO(58, 66, 86, 1.0),
+        color: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -149,18 +149,22 @@ class _ListPageState extends State<ListPage> {
     );
     final topAppBar = AppBar(
       elevation: 0.1,
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      title: Text(widget.title),
+      backgroundColor: Colors.transparent,
+      title: Text("Dashboard"),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.list),
-          onPressed: () {},
+          icon: Icon(Icons.account_circle),
+          onPressed: () {
+
+
+          },
         )
       ],
     );
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+
+      backgroundColor: Colors.transparent,
       appBar: topAppBar,
       body: makeBody,
       bottomNavigationBar: makeBottom,

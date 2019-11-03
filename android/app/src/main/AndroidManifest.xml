@@ -13,7 +13,7 @@
         android:label="hackathon2019pt2"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCcIoerZti1a3jvWVwH5YyRlFrECRL1ibY"/>
+            android:value="AIzaSyBbVhNgB0A4LxV1dFZHiUjSo43swxyGYRY"/>/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
