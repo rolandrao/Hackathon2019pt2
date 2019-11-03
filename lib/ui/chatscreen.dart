@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon2019pt2/ui/chatmessage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:hackathon2019pt2/Social.dart';
 
@@ -19,16 +20,15 @@ class ChatScreenState extends State<ChatScreen> {
   final List<ChatMessage> _messages = <ChatMessage>[];
 
 
-  void _restoreMessage() {
-    for(int i = 0; i < data.length; i++){
+  void _restoreMessage(var f) {
+    print(f);
       ChatMessage message = new ChatMessage(
-          text: data[i]['message']
+          text: f['message']
       );
 
       setState(() {
-        _messages.insert(data[i]['name'], message);
+        _messages.insert(0, message);
       });
-    }
   }
 
   void _handleSubmit(String text) {
@@ -46,12 +46,11 @@ class ChatScreenState extends State<ChatScreen> {
 
   @override
   void initState() {
+    super.initState();
     Firestore.instance.collection('forum').getDocuments().then((
         QuerySnapshot snapshot) {
       snapshot.documents.forEach((f) => print('${f.data}}'));
-  });
-
-    print(data);
+    });
       }
 
   void _uploadMessage(String text) {
@@ -110,24 +109,6 @@ class ChatScreenState extends State<ChatScreen> {
           color: Theme.of(context).cardColor,
         ),
           child: _chatEnvironment(),),
-        StreamBuilder<QuerySnapshot> (
-          stream: db.collection('forum').snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              Firestore.instance.collection('forum').getDocuments().then((
-                  QuerySnapshot snapshot) {
-                snapshot.documents.forEach((f) => print('${f.data}}'));
-              });
-              return Text(
-                'No Data...',
-              );
-            } else {
-              return Text(
-                'No Data...',
-              );
-            }
-          },
-        )
       ],
     );
   }
