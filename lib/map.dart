@@ -4,14 +4,37 @@ import 'package:hackathon2019pt2/config/config_bloc.dart';
 import 'package:hackathon2019pt2/main.dart';
 import 'package:hackathon2019pt2/universal/dev_scaffold.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:hackathon2019pt2/utils/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hackathon2019pt2/utils/readCSV.dart';
 import 'package:flutter/cupertino.dart';
+import "package:dio/dio.dart";
+
+const apiKey = "AIzaSyAxR68m3rpaOKaUHtsRSaV7NWYVMzv2kPM";
+const lat = 42.7291129;
+const lng = -73.6796580;
+
+var places = new List<Place>();
+var markers = new List<Marker>();
 
 class MapPage extends StatefulWidget {
   static const String routeName = "/map";
   @override
   _MapPageState createState() => _MapPageState();
+}
+
+class Place {
+
+  var lat;
+  var lng;
+  String name;
+
+  Place(lat, lng, name) {
+    this.lat = lat;
+    this.lng = lng;
+    this.name = name;
+  }
+
+
 }
 
 class _MapPageState extends State<MapPage> {
@@ -24,6 +47,59 @@ class _MapPageState extends State<MapPage> {
     super.initState();
   }
 
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    await searchNearby('hospital');
+    for(int i = 0; i < places.length; i++){
+        markers.add(new Marker(
+
+          markerId: MarkerId(places[i].name),
+          position: LatLng(double.parse(places[i].lat),double.parse(places[i].lng)),
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueRed,
+          ),
+          infoWindow: InfoWindow(title: places[i].name, snippet: '*'),
+          onTap:() {
+            //_onMarkerTapped(markerId);
+          },
+        ));
+    }
+
+    //for(int i = 0; i < places.length)
+
+
+  }
+
+   Future searchNearby(String keyword) async {
+    Response response;
+    var l = new List();
+    var ln = new List();
+    var name = new List();
+    var dio = Dio();
+    var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+    var parameters = {
+      'key': 'AIzaSyAxR68m3rpaOKaUHtsRSaV7NWYVMzv2kPM',
+      'location': '$lat, $lng',
+      'radius': '10000',
+      'type': keyword,
+    };
+    response = await dio.get(url, queryParameters:parameters);
+    l = response.data['results'].map<String>((result) =>
+        result['geometry']['location']['lat'].toString()).toList();
+    ln = response.data['results'].map<String>((result) =>
+        result['geometry']['location']['lng'].toString()).toList();
+    name = response.data['results'].map<String>((result) =>
+        result['name'].toString()).toList();
+
+
+    for(int i = 0; i < l.length; i++){
+        places.add(new Place(l[i],ln[i],name[i]));
+    }
+
+  }
+
+
   final CameraPosition _kGooglePlex = CameraPosition(
     target: myLocation,
     zoom: 14.4746,
@@ -35,27 +111,7 @@ class _MapPageState extends State<MapPage> {
     }
   }
   Set<Marker> _createMarker() {
-    return <Marker>[
-      Marker(
-          markerId: MarkerId("RPI"),
-          position: myLocation,
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueRed,
-          ),
-          onTap:() {
-            showDialog(context: context,
-                builder: (BuildContext context) => _buildAboutDialog(context),
-            );
-            },
-      ),
-
-      Marker(
-          markerId: MarkerId("Hospital"),
-          position: LatLng(42.7338,-73.6725),
-          icon: BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueViolet,
-          )),
-    ].toSet();
+    return markers.toSet();
   }
 
 
@@ -117,7 +173,7 @@ class _MapPageState extends State<MapPage> {
           icon: Icon(Icons.account_circle),
           onPressed: () {
             print("running getData");
-            getData();
+            //getData();
           },
         )
       ],
@@ -169,9 +225,9 @@ class _MapPageState extends State<MapPage> {
 
 }
 
-Widget _buildAboutDialog(BuildContext context) {
+Widget _buildAboutDialog(BuildContext context, String name) {
   return new AlertDialog(
-    title: const Text('About Pop up'),
+    title: Text(name),
     content: new Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,12 +246,6 @@ Widget _buildAboutDialog(BuildContext context) {
   );
 }
 
-void getData() {
-  Firestore.instance.collection('fires').getDocuments().then((QuerySnapshot snapshot) {
-    snapshot.documents.forEach((f) => print('${f.data}}'));
-  });
-
-}
 
 
 
